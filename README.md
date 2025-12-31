@@ -66,7 +66,7 @@ Here is a log of techniques tested but **not** to include in the final productio
     Due to GitHub's file size limits (max 100MB), the full dataset (`vehicles.csv`) is not hosted in this repository.
 
     To run this project locally:
-    * Download the dataset from [Kaggle](COLE_O_LINK_DO_KAGGLE_AQUI).
+    * Download the dataset from [Kaggle](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data).
     * Create a folder named `csvs/` in the root directory of the project.
     * Place the `vehicles.csv` file inside that folder.
 
