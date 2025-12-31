@@ -61,6 +61,15 @@ Here is a log of techniques tested but **not** to include in the final productio
    ```bash
    pip install -r requirements.txt
    ```
-3. Execute the notebook in the `notebooks/` folder.
+3. Dataset:
+
+    Due to GitHub's file size limits (max 100MB), the full dataset (`vehicles.csv`) is not hosted in this repository.
+
+    To run this project locally:
+    * Download the dataset from [Kaggle](COLE_O_LINK_DO_KAGGLE_AQUI).
+    * Create a folder named `csvs/` in the root directory of the project.
+    * Place the `vehicles.csv` file inside that folder.
+
+4. Execute the notebook in the `notebooks/` folder.
 ---
 *Developed by Henrique Varnier Bridi*
