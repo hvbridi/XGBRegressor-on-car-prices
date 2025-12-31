@@ -5,7 +5,7 @@
 This project aims to predict the selling price of used vehicles based on features such as model, year, odometer reading, and manufacturer. The solution uses a **XGBoost Regressor**, optimized to balance accuracy and generalization, avoiding overfitting on a dataset with high cardinality features.
 
 ## Key Results
-After extensive feature engineering and hyperparameter tuning, the final model achieved:
+After extensive data preprocessing and hyperparameter tuning, the final model achieved:
 
 | Metric | Value | Interpretation |
 | :--- | :--- | :--- |
@@ -36,7 +36,7 @@ Here is a log of techniques tested but **not** to include in the final productio
 ### 1. Log-Transformation on Target (`np.log1p`)
 * **Hypothesis:** Transforming the price to a logarithmic scale usually helps with skewed distributions and reduces the impact of expensive outliers.
 * **Result:** Both MAE and MAPE **increased** (worsened) with the transformation.
-* **Conclusion:** The price distribution in the filtered range (500-100k) was well-behaved enough that the log transformation added unnecessary complexity without performance gain. We reverted to predicting raw prices.
+* **Conclusion:** The price distribution in the filtered range (500-100k) was well-behaved enough that the log transformation added unnecessary complexity without performance gain. It was reverted to predicting raw prices.
 
 ### 2. Target Encoding on Car Models
 * **Hypothesis:** Replacing the car model name with its average price would give the XGBoost a strong signal.
@@ -55,6 +55,7 @@ Here is a log of techniques tested but **not** to include in the final productio
 1. Clone this repository:
    ```bash
    git clone [https://github.com/hvbridi/XGBRegressor-on-car-prices.git](https://github.com/hvbridi/XGBRegressor-on-car-prices.git)
+   ```
 
 2. Install the dependencies:
    ```bash
