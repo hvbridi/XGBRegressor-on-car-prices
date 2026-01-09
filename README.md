@@ -3,6 +3,7 @@
 
 ## Project Overview
 This project aims to predict the selling price of used vehicles based on features such as model, year, odometer reading, and manufacturer. The solution uses a **XGBoost Regressor**, optimized to balance accuracy and generalization, avoiding overfitting on a dataset with high cardinality features.
+The project also implements **FastAPI** to send the model predictions via a RESTful API.
 
 ## Key Results
 After extensive data preprocessing and hyperparameter tuning, the final model achieved:
@@ -54,13 +55,14 @@ Here is a log of techniques tested but **not** to include in the final productio
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/hvbridi/XGBRegressor-on-car-prices.git](https://github.com/hvbridi/XGBRegressor-on-car-prices.git)
+   git clone https://github.com/hvbridi/XGBRegressor-on-car-prices.git
    ```
 
 2. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+
 3. Dataset:
 
     Due to GitHub's file size limits (max 100MB), the full dataset (`vehicles.csv`) is not hosted in this repository.
@@ -70,6 +72,16 @@ Here is a log of techniques tested but **not** to include in the final productio
     * Create a folder named `csvs/` in the root directory of the project.
     * Place the `vehicles.csv` file inside that folder.
 
-4. Execute the notebook in the `notebooks/` folder.
+4. 
+    Create the pkl file:
+    The car_price_model.pkl is not in the repository due to github limitations so it is needed to run the notebook before running the FastAPI in order to create the file.
+
+5. Execute the notebook in the `notebooks/` folder.
+
+6. Start the FastAPI server:
+    ```bash
+    uvicorn fastapi_car_prediction:app --reload
+    ```
+
 ---
 *Developed by Henrique Varnier Bridi*
