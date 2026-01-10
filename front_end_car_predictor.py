@@ -8,7 +8,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     year=int(st.number_input('Insert the year of the car',min_value=1900,max_value=2026,value=2000))
-    odometer=float(st.number_input('Insert the odometer reading of the car',min_value=0,max_value=50000,step=1000))
+    odometer=float(st.number_input('Insert the odometer reading of the car',min_value=1,max_value=50000,step=1000))
 
 with col2:
     lat = st.number_input('Location Latitude', format="%.4f")
