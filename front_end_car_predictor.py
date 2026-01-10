@@ -1,6 +1,12 @@
 import streamlit as st
 import requests
 
+"""
+Streamlit Frontend for predicting car prices
+
+This scripts create a user friendly interface in order to make it easy to input data and use the XGBoost model to predict car prices via a POST request to the FastAPI backend
+"""
+
 st.title('Car price predictor')
 st.header('Fill the information about the car you want to predict the price')
 
@@ -15,6 +21,7 @@ with col2:
     long= st.number_input('Location Longitude', format="%.4f")
 
 st.divider()
+#.lower() is used to match training data
 model=st.text_input('Model',placeholder='e.g. Compass, Frontier crew cab pro-4x	').lower()
 manufacturer=st.text_input('Manufacturer',placeholder='e.g. Chevrolet, Toyota, Ford').lower()
 
@@ -29,6 +36,7 @@ with col5:
     type=st.selectbox('Body type',['pickup', 'truck', 'coupe', 'SUV', 'hatchback', 'mini-van', 'sedan', 'offroad', 'bus', 'van', 'convertible', 'wagon', 'other'])
 
 if st.button('Predict price'):
+    #Validates if any model and manufacturer was inputed 
     if model =='' or manufacturer=='':
         st.error('Please fill all the fields')
     
@@ -42,6 +50,7 @@ if st.button('Predict price'):
             'fuel':fuel,
             'drive':drive,
             'type':type}
+        #API request to the backend
         prediction = requests.post('http://127.0.0.1:8000/predict/',json=sending_dict).json()
         st.success(f'The predicted price for your car is {prediction:.2f}')
 
