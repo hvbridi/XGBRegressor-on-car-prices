@@ -3,7 +3,7 @@
 
 ## Project Overview
 This project aims to predict the selling price of used vehicles based on features such as model, year, odometer reading, and manufacturer. The solution uses a **XGBoost Regressor**, optimized to balance accuracy and generalization, avoiding overfitting on a dataset with high cardinality features.
-The project also implements **FastAPI** to send the model predictions via a RESTful API.
+The project also implements **FastAPI** to send the model predictions via a RESTful API and **Streamlit** in order to create a friendly interface.
 
 ## Key Results
 After extensive data preprocessing and hyperparameter tuning, the final model achieved:
@@ -82,6 +82,10 @@ Here is a log of techniques tested but **not** to include in the final productio
     ```bash
     uvicorn fastapi_car_prediction:app --reload
     ```
+7. Start the frontend interface
+   ```bash
+   streamlit run front_end_car_predictor.py
+   ```
 
 ---
 *Developed by Henrique Varnier Bridi*
