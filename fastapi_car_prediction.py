@@ -3,6 +3,12 @@ from fastapi import FastAPI,HTTPException
 import joblib
 import pandas as pd
 
+"""
+FastAPI backend for predicting car prices
+
+This script creates a pydantic model and a API that recieves POST requests using the model and preprocessor saved through the notebook
+"""
+
 app=FastAPI()
 
 class car_features(BaseModel):
