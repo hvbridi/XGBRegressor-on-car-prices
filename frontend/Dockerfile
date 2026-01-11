@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "streamlit", "run","front_end_car_predictor.py" ]
+CMD [ "streamlit", "run","front_end_car_predictor.py","--server.port=8501", "--server.address=0.0.0.0"]
