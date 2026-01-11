@@ -4,4 +4,4 @@ __pycache__
 venv
 .env
 .git
-car_price_model.pkl
+

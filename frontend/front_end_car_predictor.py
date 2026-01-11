@@ -51,7 +51,7 @@ if st.button('Predict price'):
             'drive':drive,
             'type':type}
         #API request to the backend
-        prediction = requests.post('http://127.0.0.1:8000/predict/',json=sending_dict).json()
+        prediction = requests.post('http://backend:8000/predict/',json=sending_dict).json()
         st.success(f'The predicted price for your car is {prediction:.2f}')
 
 
