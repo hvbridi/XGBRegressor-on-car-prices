@@ -6,3 +6,6 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+COPY . .
+
+CMD [ "streamlit", "run","front_end_car_predictor.py" ]
