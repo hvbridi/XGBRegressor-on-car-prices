@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "uvicorn", "fastapi_car_prediction:app", "--reload" ]   
+CMD [ "uvicorn", "fastapi_car_prediction:app","--host", "0.0.0.0", "--port", "8000" ]
