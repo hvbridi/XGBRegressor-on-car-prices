@@ -53,6 +53,14 @@ Here is a log of techniques tested but **not** to include in the final productio
 
 ## How to Run
 ### Option 1: Using Docker (recommended)
+The safest way to run this application is via docker because it ensures that all requirements are correctly installed
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/hvbridi/XGBRegressor-on-car-prices.git
+   cd XGBRegressor-on-car-prices
+   ```
+2. **Train the model**
+   -
 
    
 
