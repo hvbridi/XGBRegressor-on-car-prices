@@ -52,7 +52,6 @@ Here is a log of techniques tested but **not** to include in the final productio
 ---
 
 ## How to Run
-### Option 1: Using Docker (recommended)
 The safest way to run this application is via docker because it ensures that all requirements are correctly installed
 1. **Clone this repository**
    ```bash
@@ -74,8 +73,8 @@ The safest way to run this application is via docker because it ensures that all
    ```
    (Make sure to run the command in the root folder where the `.yml` file is)
 4. **Open the application**
-   -Frontend (Streamlit): Open http://localhost:8501 in your browser.
-   -Backend (API Docs): Access http://localhost:8000/docs.
+   - Frontend (Streamlit): Open http://localhost:8501 in your browser.
+   - Backend (API Docs): Access http://localhost:8000/docs.
   
    
 
