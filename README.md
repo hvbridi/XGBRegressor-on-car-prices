@@ -52,42 +52,9 @@ Here is a log of techniques tested but **not** to include in the final productio
 ---
 
 ## How to Run
+### Option 1: Using Docker (recommended)
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/hvbridi/XGBRegressor-on-car-prices.git
-   ```
-
-2. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Dataset:
-
-    Due to GitHub's file size limits (max 100MB), the full dataset (`vehicles.csv`) is not hosted in this repository.
-
-    To run this project locally:
-    * Download the dataset from [Kaggle](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data).
-    * Create a folder named `csvs/` in the root directory of the project.
-    * Place the `vehicles.csv` file inside that folder.
-
-4. 
-    Create the pkl file:
-    The car_price_model.pkl is not in the repository due to github limitations so it is needed to run the notebook before running the FastAPI in order to create the file.
-
-5. Execute the notebook in the `notebooks/` folder.
-
-6. Start the FastAPI server:
-   Terminal 1:
-    ```bash
-    uvicorn fastapi_car_prediction:app --reload
-    ```
-7. Start the frontend interface
-   Terminal 2:
-   ```bash
-   streamlit run front_end_car_predictor.py
-   ```
+   
 
 ---
 *Developed by Henrique Varnier Bridi*
