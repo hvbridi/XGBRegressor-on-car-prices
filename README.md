@@ -59,8 +59,26 @@ The safest way to run this application is via docker because it ensures that all
    git clone https://github.com/hvbridi/XGBRegressor-on-car-prices.git
    cd XGBRegressor-on-car-prices
    ```
-2. **Train the model**
-   -
+2. **Train the model**:
+
+   Since the trained model files (`.pkl`) are too large for GitHub, you must generate them locally:
+   - Download the dataset from [Kaggle](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data) and save it as **vehicles.csv**.
+   - Create a folder inside the cloned repository with the name **csvs** and move the dataset to inside the folder.
+   - Run the notebook to generate the `car_preprocessor.pkl` and the `car_price_model.pkl`
+   - Place the `.pkl` files inside the backend/ folder
+3. **Run docker compose**:
+
+   Run the following command:
+   ```bash
+   docker-compose up --build
+   ```
+   (Make sure to run the command in the root folder where the `.yml` file is)
+4. **Open the application**
+   -Frontend (Streamlit): Open http://localhost:8501 in your browser.
+   -Backend (API Docs): Access http://localhost:8000/docs.
+  
+   
+
 
    
 
