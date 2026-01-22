@@ -12,13 +12,18 @@ services:
       - 8501:8501
 
   database:
-    ports:
-      - 3306:3306
+    #defines the mysql version
     image: mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD= ${MYSQL_ROOT_PASSWORD}
+    #defines the required root password as my .env
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    #gives the necessary ports so the db can communicate
+    ports:
+      - 3306:3306
     volumes:
+    #creates a volume where new data/changes will be saved
       - db_data:/var/lib/mysql
 
 volumes:
+#creates the volume to be used later
   db_data:
