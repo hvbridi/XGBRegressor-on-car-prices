@@ -3,6 +3,13 @@ services:
     build: ./backend
     ports:
       - 8000:8000
+    depends_on:
+      - database
+    environment:
+      - DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - DB_HOST=database
+      - DB_NAME=cars_db
+      - DB_USER=root
 
   frontend:
     build: ./frontend
@@ -17,6 +24,7 @@ services:
     environment:
     #defines the required root password as my .env
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_NAME=cars_db
     #gives the necessary ports so the db can communicate
     ports:
       - 3306:3306
