@@ -13,8 +13,10 @@ url = f'mysql+pymysql://{user}:{password}@{host}:3306/{name}'
 engine = create_engine(url, echo=True)
 
 #tests if the engine can connect
-try:
-    engine.connect()
 
-except Exception as error:
-    print(f'Error in connecting\nError:{error}')
+def check_state():
+    try:
+        engine.connect()
+
+    except Exception as error:
+        print(f'Error in connecting\nError:{error}')

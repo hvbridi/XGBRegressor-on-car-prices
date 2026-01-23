@@ -1,4 +1,4 @@
-import database
+from database import check_state
 
 from pydantic import BaseModel
 from fastapi import FastAPI,HTTPException
@@ -35,3 +35,7 @@ def predict(car_features:car_features)->float:
     df=preprocessor.transform(df)
     prediction=model.predict(df)
     return float(prediction[0])
+
+@app.get('/health/')
+def check_health():
+    check_state()
