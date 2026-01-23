@@ -24,7 +24,7 @@ services:
     environment:
     #defines the required root password as my .env
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_NAME=cars_db
+      - MYSQL_DATABASE=cars_db
     #gives the necessary ports so the db can communicate
     ports:
       - 3306:3306
