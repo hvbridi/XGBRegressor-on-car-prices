@@ -1,3 +1,5 @@
+import database
+
 from pydantic import BaseModel
 from fastapi import FastAPI,HTTPException
 import joblib
