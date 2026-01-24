@@ -26,17 +26,18 @@ def check_state():
 base = declarative_base()
 
 class car(base):
-    __tablename__='car_db'
-    price = Column(Integer)         
-    year = Column(Float)              
-    manufacturer = Column(String(50))       
-    model = Column(String(50))                
-    fuel = Column(String(50))                 
-    odometer = Column(Float)            
-    drive = Column(String(50))                
-    type = Column(String(50))                 
-    lat = Column(Float)                 
-    long = Column(Float)                
+    __tablename__='cars'
+    id = Column(Integer,primary_key=True,index=True)
+    price = Column(Integer)
+    year = Column(Integer)
+    manufacturer = Column(String(50))
+    model = Column(String(50))
+    fuel = Column(String(50))
+    odometer = Column(Float)
+    drive = Column(String(50))
+    type = Column(String(50))
+    lat = Column(Float)
+    long = Column(Float)
     
 
 
