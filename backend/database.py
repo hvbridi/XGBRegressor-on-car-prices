@@ -16,7 +16,8 @@ engine = create_engine(url, echo=True)
 
 def check_state():
     try:
-        engine.connect()
+        with engine.connect() as connection:
+            return 'Ok'
 
     except Exception as error:
-        print(f'Error in connecting\nError:{error}')
+        return str(error)
