@@ -38,4 +38,4 @@ def predict(car_features:car_features)->float:
 
 @app.get('/health/')
 def check_health():
-    return check_state()
+    return {'status':check_state()}
