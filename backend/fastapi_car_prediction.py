@@ -1,4 +1,4 @@
-from database import check_state
+from database import check_state,base,engine
 
 from pydantic import BaseModel
 from fastapi import FastAPI,HTTPException
@@ -10,6 +10,8 @@ FastAPI backend for predicting car prices
 
 This script creates a pydantic model and a API that recieves POST requests using the model and preprocessor saved through the notebook
 """
+
+base.metadata.create_all(bind=engine)
 
 app=FastAPI()
 
