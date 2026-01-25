@@ -44,7 +44,7 @@ def check_health():
 
 df = pd.read_csv('/app/my_data/csvs/vehicles.csv')
 
-
+@app.on_event("startup")
 def populate_db():
     with session_local() as db:
         for index,row in df.iterrows():
