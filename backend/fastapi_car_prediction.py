@@ -1,7 +1,7 @@
-from database import check_state,base,engine
+from database import check_state,base,engine,car
 
 from pydantic import BaseModel
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI
 import joblib
 import pandas as pd
 
@@ -41,3 +41,19 @@ def predict(car_features:car_features)->float:
 @app.get('/health/')
 def check_health():
     return {'status':check_state()}
+
+df = pd.read_csv('/app/my_data/csvs/vehicles.csv')
+
+for index,row in df.iterrows():
+    new_car=car(
+        price = row['price'],
+        year = row['year'],
+        manufacturer = row['manufacturer'],
+        model = row['model'],
+        fuel = row['fuel'],
+        odometer = row['odometer'],
+        drive = row['drive'],
+        type = row['type'],
+        lat = row['lat'],
+        long = row['long']
+    )
