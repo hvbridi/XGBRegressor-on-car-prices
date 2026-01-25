@@ -63,6 +63,7 @@ def populate_db():
                     )
                     db.add(new_car)
                 db.commit()
+                db.query(car).count()
                 break
         except:
             time.sleep(5)
