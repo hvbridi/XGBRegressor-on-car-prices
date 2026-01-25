@@ -1,5 +1,5 @@
 from database import check_state,base,engine,car,session_local
-
+import time
 from pydantic import BaseModel
 from fastapi import FastAPI
 import joblib
@@ -10,8 +10,6 @@ FastAPI backend for predicting car prices
 
 This script creates a pydantic model and a API that recieves POST requests using the model and preprocessor saved through the notebook
 """
-
-base.metadata.create_all(bind=engine)
 
 app=FastAPI()
 
@@ -46,19 +44,25 @@ df = pd.read_csv('/app/my_data/csvs/vehicles.csv')
 
 @app.on_event("startup")
 def populate_db():
-    with session_local() as db:
-        for index,row in df.iterrows():
-            new_car=car(
-                price = row['price'],
-                year = row['year'],
-                manufacturer = row['manufacturer'],
-                model = row['model'],
-                fuel = row['fuel'],
-                odometer = row['odometer'],
-                drive = row['drive'],
-                type = row['type'],
-                lat = row['lat'],
-                long = row['long']
-            )
-            db.add(new_car)
-        db.commit()
+    while True:
+        try:
+            base.metadata.create_all(bind=engine)
+            with session_local() as db:
+                for index,row in df.iterrows():
+                    new_car=car(
+                        price = row['price'],
+                        year = row['year'],
+                        manufacturer = row['manufacturer'],
+                        model = row['model'],
+                        fuel = row['fuel'],
+                        odometer = row['odometer'],
+                        drive = row['drive'],
+                        type = row['type'],
+                        lat = row['lat'],
+                        long = row['long']
+                    )
+                    db.add(new_car)
+                db.commit()
+                break
+        except:
+            time.sleep(5)
