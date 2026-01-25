@@ -40,12 +40,12 @@ def predict(car_features:car_features)->float:
 def check_health():
     return {'status':check_state()}
 
-df = pd.read_csv('/app/my_data/csvs/vehicles.csv')
 
 @app.on_event("startup")
 def populate_db():
     while True:
         try:
+            df = pd.read_csv('/app/my_data/vehicles.csv')
             base.metadata.create_all(bind=engine)
             with session_local() as db:
                 for index,row in df.iterrows():
