@@ -1,4 +1,4 @@
-from database import check_state,base,engine,car
+from database import check_state,base,engine,car,session_local
 
 from pydantic import BaseModel
 from fastapi import FastAPI
@@ -44,16 +44,21 @@ def check_health():
 
 df = pd.read_csv('/app/my_data/csvs/vehicles.csv')
 
-for index,row in df.iterrows():
-    new_car=car(
-        price = row['price'],
-        year = row['year'],
-        manufacturer = row['manufacturer'],
-        model = row['model'],
-        fuel = row['fuel'],
-        odometer = row['odometer'],
-        drive = row['drive'],
-        type = row['type'],
-        lat = row['lat'],
-        long = row['long']
-    )
+
+def populate_db():
+    with session_local() as db:
+        for index,row in df.iterrows():
+            new_car=car(
+                price = row['price'],
+                year = row['year'],
+                manufacturer = row['manufacturer'],
+                model = row['model'],
+                fuel = row['fuel'],
+                odometer = row['odometer'],
+                drive = row['drive'],
+                type = row['type'],
+                lat = row['lat'],
+                long = row['long']
+            )
+            db.add(new_car)
+        db.commit()
