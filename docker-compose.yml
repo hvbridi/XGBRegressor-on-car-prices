@@ -10,6 +10,7 @@ services:
       - DB_HOST=database
       - DB_NAME=cars_db
       - DB_USER=root
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./csvs:/app/my_data
 

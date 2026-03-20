@@ -47,23 +47,6 @@ def populate_db():
         try:
             df = pd.read_csv('/app/my_data/vehicles.csv')
             base.metadata.create_all(bind=engine)
-            with session_local() as db:
-                for index,row in df.iterrows():
-                    new_car=car(
-                        price = row['price'],
-                        year = row['year'],
-                        manufacturer = row['manufacturer'],
-                        model = row['model'],
-                        fuel = row['fuel'],
-                        odometer = row['odometer'],
-                        drive = row['drive'],
-                        type = row['type'],
-                        lat = row['lat'],
-                        long = row['long']
-                    )
-                    db.add(new_car)
-                db.commit()
-                db.query(car).count()
-                break
+            df.to_sql('cars', con=engine, if_exists='append', index=False)
         except:
             time.sleep(5)

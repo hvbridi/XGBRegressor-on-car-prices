@@ -1,7 +1,7 @@
 import os
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import create_session
+from sqlalchemy.orm import sessionmaker
 
 #gets the data from the env variables defined in the yml
 user = os.getenv('DB_USER')
@@ -14,7 +14,7 @@ url = f'mysql+pymysql://{user}:{password}@{host}:3306/{name}'
 
 engine = create_engine(url, echo=True)
 
-session_local = create_session(autocommit=False, bind=engine, autoflush=False)
+session_local = sessionmaker(autocommit=False, bind=engine, autoflush=False)
 
 #tests if the engine can connect
 
