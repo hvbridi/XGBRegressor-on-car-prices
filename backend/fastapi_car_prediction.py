@@ -46,8 +46,10 @@ def check_health():
 def populate_db():
     while True:
         try:
-            df = pd.read_csv('/app/my_data/vehicles.csv', cols_to_use=cols_to_use,chunksize=50000)
+            df = pd.read_csv('/app/my_data/vehicles.csv', usecols=cols_to_use,chunksize=50000)
             base.metadata.create_all(bind=engine)
-            df.to_sql('cars', con=engine, if_exists='append', index=False)
-        except:
+            for chunck in df:
+                df.to_sql('cars', con=engine, if_exists='append', index=False)
+        except Exception as e:
+            print(f'error {e}')
             time.sleep(5)
