@@ -49,7 +49,8 @@ def populate_db():
             df = pd.read_csv('/app/my_data/vehicles.csv', usecols=cols_to_use,chunksize=50000)
             base.metadata.create_all(bind=engine)
             for chunck in df:
-                df.to_sql('cars', con=engine, if_exists='append', index=False)
+                chunck.to_sql('cars', con=engine, if_exists='append', index=False)
+            break
         except Exception as e:
             print(f'error {e}')
             time.sleep(5)
