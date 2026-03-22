@@ -46,14 +46,19 @@ if st.button('Predict price'):
             'drive':drive,
             'type':type}
         #API request to the backend
-        response = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io/predict/',json=sending_dict)
-        prediction = response.json()
+        prediction = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io/predict/',json=sending_dict).json()
+        st.success(f'The predicted price for your car is {prediction:.2f}')
 
-        if isinstance(prediction, dict):
-            st.error("Backend returned an error dictionary:")
-            st.json(prediction)
-        else:
-            st.success(f'The predicted price for your car is {prediction:.2f}')
+st.divider()
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <p>Developed by <a href="https://github.com/henrique4000" target="_blank">Henrique</a> | 
+        <a href="https://github.com/hvbridi/XGBRegressor-on-car-prices" target="_blank">View on GitHub</a></p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 
