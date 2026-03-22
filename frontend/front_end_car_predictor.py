@@ -1,11 +1,6 @@
 import streamlit as st
 import requests
 
-"""
-Streamlit Frontend for predicting car prices
-
-This scripts create a user friendly interface in order to make it easy to input data and use the XGBoost model to predict car prices via a POST request to the FastAPI backend
-"""
 
 st.title('Car price predictor')
 st.header('Fill the information about the car you want to predict the price')
@@ -51,8 +46,14 @@ if st.button('Predict price'):
             'drive':drive,
             'type':type}
         #API request to the backend
-        prediction = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io/predict/',json=sending_dict).json()
-        st.success(f'The predicted price for your car is {prediction:.2f}')
+        response = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io/predict/',json=sending_dict)
+        prediction = response.json()
+
+        if isinstance(prediction, dict):
+            st.error("Backend returned an error dictionary:")
+            st.json(prediction)
+        else:
+            st.success(f'The predicted price for your car is {prediction:.2f}')
 
 
 
