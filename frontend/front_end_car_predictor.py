@@ -51,7 +51,7 @@ if st.button('Predict price'):
             'drive':drive,
             'type':type}
         #API request to the backend
-        prediction = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io',json=sending_dict).json()
+        prediction = requests.post('https://api-car-predictor.blacksand-2a6fc8a9.germanywestcentral.azurecontainerapps.io/predict',json=sending_dict).json()
         st.success(f'The predicted price for your car is {prediction:.2f}')
 
 
