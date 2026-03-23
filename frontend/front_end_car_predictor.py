@@ -53,7 +53,7 @@ st.divider()
 st.markdown(
     """
     <div style="text-align: center;">
-        <p>Developed by <a href="https://github.com/henrique4000" target="_blank">Henrique</a> | 
+        <p>Developed by <a href="https://github.com/hvbridi" target="_blank">Henrique</a> | 
         <a href="https://github.com/hvbridi/XGBRegressor-on-car-prices" target="_blank">View on GitHub</a></p>
     </div>
     """,
