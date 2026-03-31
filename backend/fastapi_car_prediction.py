@@ -14,8 +14,6 @@ app=FastAPI()
 class car_features(BaseModel):
     year:int
     odometer:float
-    lat:float
-    long:float
     model:str
     manufacturer:str
     fuel:str
